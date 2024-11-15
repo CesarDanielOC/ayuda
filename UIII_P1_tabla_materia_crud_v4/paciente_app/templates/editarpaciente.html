@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+
+{% block cuerpo %}
+<div class="row">
+    <div class="col-md-4 offset-md-4">
+    <!--La targeta card-->
+    <div class="card">
+        <div class="card-body">
+          <form action="/editarPaciente/" method="POST" >{% csrf_token %}
+
+            <div class= "form-group">
+              <input type="text" id="txtcodigo" name="txtcodigo" class="form-control"
+              value="{{mispacientes.codigo}}" minLength="6" maxLength= "6" readonly required>
+            </div>
+
+            <div class= "form-group py-3">
+              <input type="text" id="txtnombre" name="txtnombre" class="form-control"
+              value="{{mispacientes.nombre}}" maxLength= "100" required>
+            </div>
+
+            <div class= "form-group py-2">
+              <input type="text" id="numcreditos" name="numcreditos" class="form-control"
+              value="{{mispacientes.creditos}}"  minLength= "1" maxLength= "9" required>
+            </div>
+
+            <div class= "form-group">
+              <input type="text" id="txtapellido" name="txtapellido" class="form-control"
+              value="{{mispacientes.apellido}}" minLength="6" maxLength= "6" readonly required>
+            </div>
+
+            <div class= "form-group py-3">
+              <input type="text" id="txtfechanacimiento" name="txtfechanacimiento" class="form-control"
+              value="{{mispacientes.fechanacimiento}}" maxLength= "100" required>
+            </div>
+
+            <div class= "form-group py-2">
+              <input type="text" id="txttelefono" name="txttelefono" class="form-control"
+              value="{{mispacientes.telefono}}"  minLength= "1" maxLength= "9" required>
+            </div>
+            <div class= "form-group py-2">
+              <input type="text" id="txtdireccion" name="txtdireccion" class="form-control"
+              value="{{mispacientes.direccion}}"  minLength= "1" maxLength= "9" required>
+            </div>
+            <div class= "form-group py-2">
+              <input type="text" id="txtfecharegistro" name="txtfecharegistro" class="form-control"
+              value="{{mispacientes.fecharegistro}}"  minLength= "1" maxLength= "9" required>
+            </div>
+
+            <div class= "form-group py-2">
+              <button type="submit" class="btn btn-primary">Guardar</button>
+            </div>
+
+          </form><!--formulario-->
+        </div>
+      </div>
+
+
+    </div><!--columna-->
+</div><!--fila-->
+
+{% endblock %}

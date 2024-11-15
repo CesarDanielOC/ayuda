@@ -1,0 +1,89 @@
+  {% extends "base.html" %}
+  
+  
+  {% block cuerpo %}
+  <div class="row"><!--lafila-->
+  <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4"><!--columna izquierda-->
+      <h1>mama</h1>
+      <div class="card">
+        <div class="card-body">
+          <form action="registrarPaciente/" method="POST" >{% csrf_token %}
+            <div class= "form-group">
+              <input type="text" id="txtcodigo" name="txtcodigo" class="form-control"
+              placeholder = "Codigo Paciente" minLength="6" maxLength= "6" required>
+            </div>
+
+            <div class= "form-group py-3">
+              <input type="text" id="txtnombre" name="txtnombre" class="form-control"
+              placeholder = "Nombre Paciente" maxLength= "100" required>
+            </div>
+
+            <div class= "form-group py-2">
+              <input type="text" id="numcreditos" name="numcreditos" class="form-control"
+              placeholder ="Apellido Paciente"  minLength= "1" maxLength= "9" required>
+            </div>
+            <div class= "form-group py-2">
+              <input type="text" id="numcreditos" name="numcreditos" class="form-control"
+              placeholder ="Fecha Nacimiento"  minLength= "1" maxLength= "9" required>
+            </div>
+            <div class= "form-group py-2">
+              <input type="text" id="numcreditos" name="numcreditos" class="form-control"
+              placeholder ="Telefono"  minLength= "1" maxLength= "9" required>
+            </div>
+            <div class= "form-group py-2">
+              <input type="text" id="numcreditos" name="numcreditos" class="form-control"
+              placeholder ="Direccion"  minLength= "1" maxLength= "9" required>
+            </div>
+            <div class= "form-group py-2">
+              <input type="text" id="numcreditos" name="numcreditos" class="form-control"
+              placeholder ="Fecha de Registro"  minLength= "1" maxLength= "9" required>
+            </div>
+            <div class= "form-group py-2">
+              <button type="submit" class="btn btn-primary">Guardar</button>
+            </div>
+
+          </form><!--formulario-->
+        </div>
+      </div>
+  </div><!--columna izquierda-->
+
+  <div class="col-sm-12 col-md-8 col-lg-8 col-xl-4"><!--columna derecha-->
+      <h1>papa</h1>
+      <div class="table responsive">
+          <table class= "table table-striped">
+
+              <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">Codigo</th>
+                  <th scope="col">Nombre</th>
+                  <th scope="col">Especialidad</th>
+
+                </tr>
+              </thead>
+              <tbody>
+                {% for m in mispacientes  %}
+                <tr>
+                  <td>{{forloop.counter}}</td>
+                  <td>{{m.codigo}}</td>
+                  <td>{{m.nombre}}</td>
+                  <td>{{m.creditos}}</td>
+                  <td>{{m.fechanacimiento}}</td>
+                  <td>{{m.telefono}}</td>
+                  <td>{{m.direccion}}</td>
+                  <td>{{m.fecharegistro}}</td>
+                  <td> <a href="seleccionarPaciente/{{m.codigo}}"  class="btn btn-info">Editar </a></td>
+                  <td> <a href="borrarPaciente/{{m.codigo}}" class="btn btn-danger">Borrar </a></td>
+
+
+
+                </tr>
+                
+                {% endfor %}
+              </tbody>
+            </table>
+      </div>
+
+  </div><!--columna derecha-->
+  </div><!--lafila-->
+  {% endblock %}
